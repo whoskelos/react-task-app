@@ -18,10 +18,10 @@ export default function TasksPage() {
 
   return (
     <div>
-      <h1 className="text-5xl font-bold tracking-wide text-center uppercase my-12">
+      <h1 className="text-5xl text-slate-700 font-bold tracking-wide text-center uppercase my-12">
         Tareas
       </h1>
-      <div className="grid grid-cols-3 gap-4">{renderMain()}</div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10">{renderMain()}</div>
     </div>
   );
 }

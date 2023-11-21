@@ -23,18 +23,16 @@ export default function TaskForm() {
       }
     };
     loadTask();
-  }, []);
+  }, [task]);
 
   return (
-    <div>
-      <h1>{params.id ? "Editar tarea" : "Crear tarea"}</h1>
-
+    <div className="pt-8 w-full">
       <Formik
         initialValues={task}
         enableReinitialize={true}
         onSubmit={async (values, actions) => {
           console.log(values);
-
+          
           if (params.id) {
             await updateTask(params.id, values);
           } else {
@@ -44,26 +42,35 @@ export default function TaskForm() {
         }}
       >
         {({ handleChange, handleSubmit, values, isSubmitting }) => (
-          <Form onSubmit={handleSubmit}>
-            <label htmlFor="">Titulo</label>
-            <input
-              type="text"
-              name="title"
-              placeholder="Escribe una tarea"
-              onChange={handleChange}
-              value={values.title}
-            />
+          <Form onSubmit={handleSubmit} className="bg-white shadow-2xl p-8 w-full md:max-w-[40%] flex flex-col gap-6 text-xl text-white font-medium rounded-md">
+            <h1 className="text-3xl text-black font-medium">{params.id ? "Editar tarea" : "Crear tarea"}</h1>
+            <div className="w-full flex flex-col gap-y-1">
+              <label className="text-black" htmlFor="">Titulo</label>
+              <input
+                className="bg-gray-200 rounded-md pl-2 pb-2 text-gray-700 focus:outline-none"
+                type="text"
+                name="title"
+                placeholder="Escribe una tarea"
+                onChange={handleChange}
+                value={values.title}
+              />
+            </div>
 
-            <label htmlFor="">Descripcion</label>
-            <textarea
-              name="description"
-              rows="3"
-              placeholder="Describe la tarea"
-              onChange={handleChange}
-              value={values.description}
-            ></textarea>
+            <div className="w-full flex flex-col gap-y-1">
 
-            <button type="submit" disabled={isSubmitting}>
+              <label className="text-black" htmlFor="">Descripcion</label>
+              <textarea
+                className="bg-gray-200 rounded-md pl-2 text-gray-700 focus:outline-none"
+                name="description"
+                rows="2"
+                placeholder="Describe la tarea"
+                onChange={handleChange}
+                value={values.description}
+              ></textarea>
+
+            </div>
+
+            <button type="submit" disabled={isSubmitting} className="bg-sky-600 hover:bg-sky-800 transition-all py-2 rounded-md">
               {isSubmitting ? "Guardando..." : "Guardar"}
             </button>
           </Form>

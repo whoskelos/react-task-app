@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <div className="bg-sky-900 text-white px-10 py-2">
-      <header className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold tracking-wide">Mis Tareas</h1>
+    <div className="bg-sky-900 text-white w-full py-4">
+      <header className="flex justify-between items-center w-full max-w-[80%] mx-auto">
+        <h1 className="text-xl md:text-3xl font-bold tracking-wide"><Link to="/">Mis Tareas</Link></h1>
         <nav>
-          <ul className="flex gap-2 [&>li]:text-lg [&>li]:font-medium">
+          <ul className="flex gap-x-4 [&>li]:text-md md:[&>li]:text-xl [&>li]:font-medium">
             <li className="hover:text-gray-400 transition-colors">
               <Link to="/">Inicio</Link>
             </li>
